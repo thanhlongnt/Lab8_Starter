@@ -68,6 +68,12 @@ async function getRecipes() {
   // EXPOSE - START (All expose numbers start with A)
   // A1. TODO - Check local storage to see if there are any recipes.
   //            If there are recipes, return them.
+  let recipes = localStorage.getItem('recipes');
+
+  if (recipes) {
+    return JSON.parse(recipes);
+  }
+
   /**************************/
   // The rest of this method will be concerned with requesting the recipes
   // from the network
@@ -77,6 +83,9 @@ async function getRecipes() {
   //            function (we call these callback functions). That function will
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
+
+  let newRecipes = [];
+
   /**************************/
   // A4-A11 will all be *inside* the callback function we passed to the Promise
   // we're returning
@@ -100,6 +109,39 @@ async function getRecipes() {
   //            resolve() method.
   // A10. TODO - Log any errors from catch using console.error
   // A11. TODO - Pass any errors to the Promise's reject() function
+
+  return new Promise(async (resolve, reject) => {
+    // A4
+    for (let recipeURL of RECIPE_URLS){
+      // A5
+      try {
+        
+        // A6
+        let response = await fetch(recipeURL);
+
+        // A7
+        let r = await response.json();
+
+        console.log(r)
+
+        // A8
+        newRecipes.push(r);
+      }
+      catch (error){
+        // A10
+        console.error(error);
+        
+        // A11
+        reject(error);
+      }
+    }
+    // A9
+    if (newRecipes.length === RECIPE_URLS.length) {
+      console.log(newRecipes)
+      localStorage.setItem('recipes', JSON.stringify(newRecipes));
+      resolve(recipes)
+    }
+  })
 }
 
 /**
