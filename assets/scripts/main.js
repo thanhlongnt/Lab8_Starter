@@ -142,7 +142,7 @@ async function getRecipes() {
         // A7
         let r = await response.json();
 
-        console.log(r)
+        // console.log(r)
 
         // A8
         newRecipes.push(r);
@@ -157,9 +157,9 @@ async function getRecipes() {
     }
     // A9
     if (newRecipes.length === RECIPE_URLS.length) {
-      console.log(newRecipes)
+      // console.log(newRecipes);
       localStorage.setItem('recipes', JSON.stringify(newRecipes));
-      resolve(recipes)
+      resolve(newRecipes);
     }
   })
 }
