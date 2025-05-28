@@ -1,11 +1,11 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Lab8_Starter",
+    "short_name": "Thanh-Long Nguyen-Trong",
     "description": "",
-    "start_url": "",
-    "display": "",
-    "background_color": "",
-    "theme_color": "",
+    "start_url": ".",
+    "display": "browser",
+    "background_color": "red",
+    "theme_color": "blue",
     "icons": [
       {
         "src": "/assets/images/icons/icon-192x192.png",
@@ -13,5 +13,5 @@
         "type": "image/png"
       }
     ]
-  }
+}
   
