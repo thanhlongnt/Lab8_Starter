@@ -18,7 +18,7 @@ async function init() {
   // initialize ServiceWorker
   initializeServiceWorker();
   // Get the recipes from localStorage
-  let recipes;
+  let recipes; 
   try {
     recipes = await getRecipes();
   } catch (err) {
